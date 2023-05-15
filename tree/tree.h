@@ -27,14 +27,19 @@ typedef struct tree
     // handled by the tree object
     int *nodes_at_level;
 
+    // depth of tree
     int depth;
 } tree_t;
 
 // Initiate an empty binary tree where the nodes_at_level array has length 'depth'.
-// The 0th level is NOT the tree root and is instead the level after (the 
-// children of the root tree). It is the responsibility of the progammer to 
-// update the values of this array - it is not internally handled by the tree object
+// It is the responsibility of the progammer to update the values of this array 
+// - it is not internally handled by the tree object
 tree_t *new_tree(int depth);
+
+// Initiate a binary tree at a given root node where the nodes_at_level 
+// array has length 'depth'. It is the responsibility of the progammer to update
+// the values of this array - it is not internally handled by the tree object
+tree_t *new_tree_with_root(node_t *root, int depth);
 
 // Initiate an empty tree node
 node_t *new_node();
@@ -43,8 +48,8 @@ node_t *new_node();
 int count_paths(tree_t *tree, int depth);
 
 // Create a new tree with the common paths between tree1 and tree2.
-// Assuming the 'nodes_at_level' array has the correct values for the input 
-// trees, the output tree will also have the correct array values
+// The 'nodes_at_level' array will have the correct values in the returned
+// tree even if they're not correct in the input trees
 tree_t *intersect_trees(tree_t *tree1, tree_t *tree2);
 
 // Check if tree1 is a subset of tree2
