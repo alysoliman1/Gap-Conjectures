@@ -70,8 +70,8 @@ int main(){
     int N = 200;
     float xi = 0.1;
 
+    tree_t *tree = circle_encodings(N, p, xi);
 
-
-    dump_array("lowerbounds.json", bounds, N);
+    dump_array("lowerbounds.json", tree->nodes_at_level, N);
     return 0;
 }

@@ -21,10 +21,9 @@ typedef struct tree
     node_t *root;
 
     // The ith element of this array counts the number of nodes at the ith
-    // level of the tree. The 0th level is NOT the tree root and is instead the 
-    // level after (the children of the root tree). It is the responsibility of 
-    // the progammer to update the values of this array - it is not internally 
-    // handled by the tree object
+    // level of the tree. The 0th level is the tree root. It is the 
+    // responsibility of the progammer to update the values of this array - it 
+    // is not internally handled by the tree object
     int *nodes_at_level;
 
     // depth of tree
