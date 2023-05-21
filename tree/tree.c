@@ -30,7 +30,7 @@ int _count_paths(node_t *root, int depth){
     }
 
     // The path containing the root node
-    if (depth == 0){
+    if (depth == 1){
         return 1;
     }
     

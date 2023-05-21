@@ -49,6 +49,12 @@ int main(){
     root1->right->left = new_node();
     root1->right->right = new_node();
     root1->right->left->right = new_node();
+    
+    assert(tree1->depth == 4);
+    assert(count_paths(tree1, 1) == 1);
+    assert(count_paths(tree1, 2) == 2);
+    assert(count_paths(tree1, 3) == 4);
+    assert(count_paths(tree1, 4) == 3);
 
     tree_t *tree2 = new_tree(4);
     node_t *root2 = tree2->root;
@@ -64,10 +70,13 @@ int main(){
     node_t *root = tree->root;
 
     assert(tree->depth == 4);
+    assert(count_paths(tree, 3) == 3);
+    assert(count_paths(tree, 4) == 2);
+
     assert(subset(tree, tree1));
     assert(subset(tree, tree2));
     assert(subset(tree2, tree));
-    
+
     assert(tree->nodes_at_level[0] == 1);
     assert(tree->nodes_at_level[1] == 2);
     assert(tree->nodes_at_level[2] == 3);
@@ -85,7 +94,6 @@ int main(){
     assert(root->left->right != NULL);
     assert(root->left->right->left != NULL);
     assert(root->left->right->right == NULL);
-
 
     return 0;
 }
