@@ -1,8 +1,13 @@
-all: dynamic_bounds clean
+all: dynamical_bounds combinatorial_conditions clean
 
-dynamic_bounds: tree json
-	@gcc -c dynamicbounds/lower_estimates.c -o lower_estimates.o
+combinatorial_conditions: gen_tree
+
+dynamical_bounds: tree json
+	@gcc -c dynamical-bounds/lower_estimates.c -o lower_estimates.o
 	@gcc lower_estimates.o json.o tree.o -o bins/lower_estimates
+
+gen_tree: combinatorial-conditions/gen_tree.c combinatorial-conditions/gen_tree.h 
+	@gcc -c combinatorial-conditions/gen_tree.c -o gen_tree.o
 
 tree: tree/tree.c tree/tests.c tree/tree.h
 	@gcc -c tree/tree.c -o tree.o

@@ -2,6 +2,9 @@
 #define TREE_H
 #include <stdbool.h>
 
+#define LEFT 0
+#define RIGHT 1
+
 // Node object in a binary tree.
 typedef struct node {
     // left child
@@ -10,8 +13,8 @@ typedef struct node {
     // right child
     struct node *right;
 
-    // Extra data at a node if needed
-    void *data;
+    // Extra data in a node if needed
+    void *context;
 } node_t;
 
 // A binary tree object
