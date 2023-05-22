@@ -6,7 +6,7 @@ bin_t *new_bin(int size){
     bin_t *bin = malloc(sizeof(bin_t));
     bin->size = size;
     bin->elements = malloc(size * sizeof(int));
-    for (int i = 0; i < bin->elements; i++){
+    for (int i = 0; i < size; i++){
         bin->elements[i] = -1;
     }
     return bin;

@@ -1,11 +1,8 @@
-#include "../tree/tree.h"
-#include "../json/json.h"
+#include "../utils/tree/tree.h"
+#include "../utils/json/json.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-// Note
-// Read the json and tree modules before reading this code
 
 // Check if a point on the circle is in the open interval (0.5 - xi, 0.5 + xi)
 bool inrange(float point, float xi){

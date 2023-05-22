@@ -1,6 +1,6 @@
 #ifndef CONTEXTS_H
 #define CONTEXTS_H
-#include "../bin/bin.h"
+#include "../utils/bin/bin.h"
 
 // A context is a finite collection of data associated with every node in a binary
 // tree. The idea is that, given the context of a node, we are able to decide if

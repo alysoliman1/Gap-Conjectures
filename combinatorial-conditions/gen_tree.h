@@ -1,6 +1,6 @@
 #ifndef GEN_TREE_H
 #define GEN_TREE_H
-#include "../tree/tree.h"
+#include "../utils/tree/tree.h"
 
 // A context is a finite collection of data associated with every node in a binary
 // tree. The idea is that, given the context of a node, we are able to decide if
