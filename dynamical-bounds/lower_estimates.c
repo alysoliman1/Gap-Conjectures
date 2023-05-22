@@ -66,15 +66,15 @@ int main(){
 
     // The integer p is a really large prime, the circle R/Z will be 
     // approximated by Z_p
-    long p = 41000891; // 39916801;
+    long p = 81677047; 
 
     // We're computing L(xi, k) for all 1 <= k < N
     // L(xi, k) is a lower bound on the number of sets in [k] = {0, ..., k - 1}
     // that are of the form A(alpha, (0.5 - xi, 0.5 + xi)) \cap [k] for some 
     // alpha. Elements in L(xi, k) are subsets of [k] and can be represents 
     // as paths in a binary tree of depth k
-    int N = 500;
-    float xi = 0.1;
+    int N = 1000;
+    float xi = 0.125;
     start_time = clock();
     tree_t *tree = circle_encodings(N, p, xi);
     stop_time = clock();
