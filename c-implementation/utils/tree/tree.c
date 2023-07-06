@@ -22,7 +22,8 @@ tree_t *new_tree_with_root(node_t *root, int depth){
 tree_t *new_tree(int depth){
     return new_tree_with_root(new_node(), depth);
 }
- 
+
+// This is a recursive helper function for the counts_path method 
 int _count_paths(node_t *root, int depth){
     // An empty tree has zero paths
     if (root == NULL){
@@ -104,3 +105,4 @@ bool _subset(node_t *root1, node_t *root2){
 bool subset(tree_t *tree1, tree_t *tree2){
     return _subset(tree1->root, tree2->root);
 }
+

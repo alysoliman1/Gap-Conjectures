@@ -11,13 +11,13 @@ void _tree_from_context(child_context get_context, node_t *node, int *nodes_at_l
     void *left_context = get_context(node->context, LEFT);
     void *right_context = get_context(node->context, RIGHT);
 
-    if (left_context){
+    if (left_context != NULL){
         node->left = new_node();
         node->left->context = left_context;
         _tree_from_context(get_context, node->left, nodes_at_level, level + 1, depth);
     }
 
-    if (right_context){
+    if (right_context != NULL){
         node->right = new_node();
         node->right->context = right_context;
         _tree_from_context(get_context, node->right, nodes_at_level, level + 1, depth);
@@ -33,4 +33,8 @@ tree_t *tree_from_context(child_context get_context, void *root_context, int dep
     }
     _tree_from_context(get_context, tree->root, tree->nodes_at_level, 0, depth);
     return tree;
+}
+
+bool tree_in_context(child_context get_context, node_t *root, void *root_context){
+    
 }

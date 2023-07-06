@@ -14,8 +14,7 @@ tree_t *circle_encodings(int N, long p, float xi){
     tree_t *tree = new_tree(N + 1); 
 
     // Variables to be used later
-    node_t *current_node;
-    node_t *next_node;
+    node_t *current_node, *next_node;
     bool move_right;
     float point;
 
@@ -68,7 +67,7 @@ int main(){
     // We're computing L(xi, k) for all 1 <= k < N
     // L(xi, k) is a lower bound on the number of sets in [k] = {0, ..., k - 1}
     // that are of the form A(alpha, (0.5 - xi, 0.5 + xi)) \cap [k] for some 
-    // alpha. Elements in L(xi, k) are subsets of [k] and can be represents 
+    // alpha. Elements in L(xi, k) are subsets of [k] and can be represented 
     // as paths in a binary tree of depth k
     int N = 1000;
     float xi = 0.125;

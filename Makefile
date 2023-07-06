@@ -1,32 +1,18 @@
-all: dynamical_bounds combinatorial_conditions clean
+all: utils contexts bfs clean
 
-combinatorial_conditions: bin gen_tree
+bfs: bfs/node.cpp bfs/node.hpp bfs/bfs.cpp contexts utils 
+	g++ -std=c++11 -c bfs/bfs.cpp -o bfs.obj
+	g++ -std=c++11 -c bfs/node.cpp -o node.obj
+	g++ -std=c++11 bfs.obj node.obj contexts.obj bucket.obj -o binaries/bfs
 
-dynamical_bounds: tree json
-	@gcc -c dynamical-bounds/lower_estimates.c -o lower_estimates.o
-	@gcc lower_estimates.o json.o tree.o -o binaries/lower_estimates
+contexts: contexts/contexts.cpp contexts/contexts.hpp
+	g++ -c -std=c++11 contexts/contexts.cpp -o contexts.obj
 
-gen_tree: combinatorial-conditions/gen_tree.c combinatorial-conditions/gen_tree.h 
-	@gcc -c combinatorial-conditions/gen_tree.c -o gen_tree.o
-
-bin: utils/bin/bin.c
-	@gcc -c utils/bin/bin.c -o bin.o
-	@gcc -c utils/bin/tests.c -o bin_tests.o
-	@gcc bin_tests.o bin.o -o bin_tests
-	@echo running bin module unit tests ...
-	@./bin_tests
-	@rm bin_tests	 
-
-tree: utils/tree/tree.c utils/tree/tests.c utils/tree/tree.h
-	@gcc -c utils/tree/tree.c -o tree.o
-	@gcc -c utils/tree/tests.c -o tree_tests.o
-	@gcc tree_tests.o tree.o -o tree_tests
-	@echo running tree module unit tests ...
-	@./tree_tests
-	@rm tree_tests
-
-json: utils/json/json.c utils/json/json.h
-	@gcc -c utils/json/json.c -o json.o
-
+utils: utils/bucket.cpp utils/bucket.hpp utils/tests.cpp
+	g++ -c -std=c++11 utils/bucket.cpp -o bucket.obj
+	g++ -c -std=c++11 utils/tests.cpp -o utils_tests.obj
+	g++ -std=c++11 bucket.obj utils_tests.obj -o utils_tests
+	./utils_tests
+	rm utils_tests 
 clean:
-	@rm *.o
+	rm *.obj

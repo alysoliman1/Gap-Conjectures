@@ -12,24 +12,6 @@
 // a combinatorial condition. 
 
 ////////////////////////////////////////////////////////////////////////////////
-
-// Context object associated with binary words that satisfy the three gap
-// condition. In particular, the gaps between consecutive ones belong to a set
-// of size 3 and the gaps between between consecutive zeros belong to a set of size 3
-typedef struct three_gap_context {
-    bin_t *one_gaps;
-    bin_t *zero_gaps;
-    int index;
-    int last_zero_index;
-    int last_one_index;
-} three_gap_context_t;
-
-void *root_three_gap_context();
-
-void *get_three_gap_context(void *context, int direction);
-
-////////////////////////////////////////////////////////////////////////////////
-
 typedef struct higher_gap_context {
 
 
@@ -38,9 +20,17 @@ typedef struct higher_gap_context {
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef struct recurring_gap_context {
-
-
+    int gaps_depth;
+    int *index;
+    int *last_letter;
+    bin_t **gap_bins;
+    int *last_recurrence;
 } recurring_gap_context_t;
 
+void *new_recurring_gap_context(int *gap_bounds, int gaps_depth);
+
+recurring_gap_context_t *copy_recurring_gap_context(recurring_gap_context_t *src);
+
+void *get_recurring_gap_context(void *context, int direction);
 
 #endif

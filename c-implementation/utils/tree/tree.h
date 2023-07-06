@@ -29,7 +29,7 @@ typedef struct tree
     // is not internally handled by the tree object
     int *nodes_at_level;
 
-    // depth of tree
+    // Depth of tree - this is the length of the nodes_at_level array
     int depth;
 } tree_t;
 
@@ -56,6 +56,8 @@ tree_t *intersect_trees(tree_t *tree1, tree_t *tree2);
 
 // Check if tree1 is a subset of tree2
 bool subset(tree_t *tree1, tree_t *tree2);
+
+void print_words(tree_t *tree);
 
 #endif
 

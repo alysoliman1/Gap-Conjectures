@@ -22,4 +22,16 @@ typedef void *child_context(void *context, int direction);
 // tree so we terminate the process when hitting a given `depth`.
 tree_t *tree_from_context(child_context get_context, void *root_context, int depth);
 
+// Given an existing tree T, decide if T is a subtree of the tree generated 
+// by a context (i.e if all the binary words corresponding to paths in T satisfy
+// the combinatorial property defined by the given context)
+// Input
+// get_context - the context getter specified above
+// root - root of T
+// context at the root of the tree generated the context (we want to check if T
+// is a subtree of this tree)
+// It should be noted that T will be mutated and each of its nodes will have a 
+// context attached
+bool tree_in_context(child_context get_context, node_t *root, void *root_context);
+
 #endif
