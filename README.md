@@ -1,5 +1,4 @@
 
-
 Our primary testing object is a binary tree. We will store a tree in a dynamo table.
 Each node has a unique id, pointer to left and right children, and the level the node is at.
 
